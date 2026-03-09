@@ -26,3 +26,26 @@ entity.contact.collection:
   route_name: entity.content_entity_example_contact.collection
   base_route: system.admin_content
   weight: 9
+
+entity.news.settings:
+  title: 'Settings'
+  route_name: entity.news.settings
+  base_route: entity.news.settings
+entity.news.view:
+  title: 'View'
+  route_name: entity.news.canonical
+  base_route: entity.news.canonical
+entity.news.edit_form:
+  title: 'Edit'
+  route_name: entity.news.edit_form
+  base_route: entity.news.canonical
+entity.news.delete_form:
+  title: 'Delete'
+  route_name: entity.news.delete_form
+  base_route: entity.news.canonical
+  weight: 10
+entity.news.collection:
+  title: 'News'
+  route_name: entity.news.collection
+  base_route: system.admin_content
+  weight: 10

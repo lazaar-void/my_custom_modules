@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_entity_example
+id: news_save_action
+label: 'Save news'
+type: news
+plugin: entity:save_action:news
+configuration: {  }

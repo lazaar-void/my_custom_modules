@@ -8,3 +8,7 @@
   title: Edit entity content
 'administer contact entity':
   title: Administer settings
+
+administer news:
+  title: 'Administer news'
+  restrict access: true

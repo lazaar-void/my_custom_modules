@@ -1,0 +1,10 @@
+entity.news.edit_form:
+  route_name: entity.news.edit_form
+  group: news
+  title: 'Edit'
+
+entity.news.delete_form:
+  route_name: entity.news.delete_form
+  group: news
+  title: 'Delete'
+  weight: 10

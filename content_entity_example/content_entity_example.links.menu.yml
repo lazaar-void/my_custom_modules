@@ -10,3 +10,15 @@ content_entity_example_contact.settings:
   description: 'Configure Contact entity'
   route_name:  content_entity_example.contact_settings
   parent: system.admin_structure
+
+entity.news.settings:
+  title: 'News'
+  description: 'Configure a News entity type.'
+  route_name:  entity.news.settings
+  parent: system.admin_structure
+
+entity.news.collection:
+  title: 'News'
+  description: 'List of news.'
+  route_name: entity.news.collection
+  parent: system.admin_content

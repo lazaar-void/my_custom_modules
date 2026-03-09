@@ -9,3 +9,9 @@ content_entity_example.contact_add:
   appears_on:
     - entity.content_entity_example_contact.collection
     - entity.content_entity_example_contact.canonical
+
+news.add_form:
+  title: 'Add news'
+  route_name: entity.news.add_form
+  appears_on:
+    - entity.news.collection

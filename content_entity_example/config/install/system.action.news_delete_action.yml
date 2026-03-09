@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_entity_example
+id: news_delete_action
+label: 'Delete news'
+type: news
+plugin: entity:delete_action:news
+configuration: {  }

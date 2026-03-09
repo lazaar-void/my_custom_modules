@@ -18,3 +18,11 @@ content_entity_example.contact_add:
     # checkAccess().
     _entity_create_access: 'content_entity_example_contact'
 
+
+entity.news.settings:
+  path: 'admin/structure/news'
+  defaults:
+    _form: '\Drupal\content_entity_example\Form\NewsSettingsForm'
+    _title: 'News'
+  requirements:
+    _permission: 'administer news'
