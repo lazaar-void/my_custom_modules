@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for my_module.
+ */
+
+/**
+ * Implements hook_form_alter().
+ */
+function anytown_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id === 'some_target_form') {
+    $form['my_custom_field'] = [
+      '#type' => 'textfield',
+      '#title' => t('My Custom Field'),
+      '#description' => t('Enter a value.'),
+      '#weight' => 50,
+    ];
+  }
+}
+
+function my_module_preprocess(array &$variables) {
+  $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+}
+
+
+function anytown_page_attachments_alter(array &$attachments) {
+  $viewport = [
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => 'viewport',
+      'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no',
+    ],
+  ];
+  $attachments['#attached']['html_head'][] = [$viewport, 'viewport'];
+}
+
+/**
+ * Custom validation handler for the user registration form.
+ */
+function anytown_user_register_validate(&$form, FormStateInterface $form_state) {
+  if ($form_state->getValue('name') === 'anytown') {
+    $form_state->setErrorByName('name', t('The username "anytown" is invalid. Please choose a different name.'));
+  }
+}
+
+//
+//function anytown_preprocess_menu(array &$variables) {
+//  foreach ($variables['items'] as &$item) {
+//    // Add the class to the menu item's attributes.
+//    $item['attributes']->addClass('my-custom-class');
+//  }
+//}
+//
+//function anytown_preprocess_block(array &$variables) {
+//  if ($variables['plugin_id'] === 'system_branding_block') {
+//    dump($variables['elements']['content']['site_logo']);
+//    $variables['elements']['content']['site_logo']['#uri'] =
+//    // Or simply override the logo URL variable:
+//    // $variables['site_logo'] = 'https://static.cdnlogo.com/logos/d/88/drupal-wordmark.svg';
+//
+//      'https://static.cdnlogo.com/logos/d/88/drupal-wordmark.svg'
+//     ;
+//    dump($variables['elements']['content']['site_logo']);
+//  }
+//}
+
+
