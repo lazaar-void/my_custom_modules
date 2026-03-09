@@ -1,0 +1,5 @@
+node_reference.settings:
+  title: 'Node Reference'
+  description: 'Configure the node reference selection.'
+  route_name: node_reference.settings
+  parent: system.admin_config_system

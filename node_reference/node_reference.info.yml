@@ -1,0 +1,5 @@
+name: 'Node Reference'
+type: module
+description: 'Day 5 exercise: entity reference form, block with entity queries, and hook_theme.'
+package: Custom
+core_version_requirement: ^10 || ^11

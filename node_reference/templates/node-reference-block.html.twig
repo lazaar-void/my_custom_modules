@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Template for the Node Reference block.
+ *
+ * Available variables:
+ * - selected_title: The title of the selected node.
+ * - related_nodes: An array of titles of related nodes (same content type).
+ *
+ * @ingroup themeable
+ */
+#}
+
+<div class="node-reference-block">
+  <h3>{{ "Selected Node"|t }}</h3>
+  <p class="node-reference-block--selected">{{ selected_title }}</p>
+
+  {% if related_nodes is not empty %}
+    <h4>{{ "Related Nodes (same content type)"|t }}</h4>
+    <ul class="node-reference-block--related">
+      {% for title in related_nodes %}
+        <li>{{ title }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>{{ "No other nodes of the same content type were found."|t }}</p>
+  {% endif %}
+</div>

@@ -1,0 +1,8 @@
+# Route definitions for the node_reference module.
+node_reference.settings:
+  path: '/admin/config/system/node-reference'
+  defaults:
+    _title: 'Node Reference Settings'
+    _form: 'Drupal\node_reference\Form\NodeReferenceSettingsForm'
+  requirements:
+    _permission: 'administer site configuration'
