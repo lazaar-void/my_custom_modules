@@ -118,10 +118,10 @@ use Drupal\Core\Field\BaseFieldDefinition;
 function content_entity_example_entity_base_field_info(EntityTypeInterface $entity_type) {
   $fields = [];
 
-  // Assuming the machine name of your entity type is 'news'. 
+  // Assuming the machine name of your entity type is 'news'.
   // Change this if it's something else like 'news_item'.
   if ($entity_type->id() === 'news') {
-    
+
     // Create the new base field.
     $fields['custom_news_data'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Custom Data'))
@@ -141,4 +141,36 @@ function content_entity_example_entity_base_field_info(EntityTypeInterface $enti
   }
 
   return $fields;
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave() for 'node' entities.
+ */
+function content_entity_example_node_presave(\Drupal\Core\Entity\EntityInterface $entity): void {
+  // Check if the entity is a node, if it's new (not an update), and if its bundle is 'article'.
+  if ($entity->isNew() && $entity->bundle() === 'article') {
+    $current_title = $entity->getTitle();
+    // Only prefix if it hasn't been prefixed already (optional safety check).
+    if (strpos($current_title, 'HEY-') !== 0) {
+      $entity->setTitle('HEY-' . $current_title);
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ */
+function content_entity_example_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+  if ($hook === 'user') {
+    // Ensure the view mode is available in the variables array.
+    if (isset($variables['elements']['#view_mode'])) {
+      $view_mode = $variables['elements']['#view_mode'];
+      
+      // Sanitize the view mode string (replace dashes with underscores).
+      $sanitized_view_mode = strtr($view_mode, '-', '_');
+      
+      // Add the suggestion. The result will look like 'user__compact'
+      $suggestions[] = 'user__' . $sanitized_view_mode;
+    }
+  }
 }

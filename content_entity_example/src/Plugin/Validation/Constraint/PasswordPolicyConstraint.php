@@ -21,6 +21,6 @@ class PasswordPolicyConstraint extends Constraint {
    *
    * @var string
    */
-  public $message = 'The password does not satisfy the current password policy.';
+  public $message = 'The password does not SATISFYY the current password policy.';
 
 }

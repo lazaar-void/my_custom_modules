@@ -68,6 +68,7 @@ class PasswordPolicyConstraintValidator extends ConstraintValidator implements C
     }
 
     if (strlen($password) < 8) {
+      $constraint->message = "Password length must be higher than 8";
       $this->context->addViolation($constraint->message);
     }
 
