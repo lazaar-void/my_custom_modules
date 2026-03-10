@@ -1,0 +1,29 @@
+<?php
+
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Add the 'custom_news_data' base field to the 'news' entity type.
+ */
+function content_entity_example_update_9001()
+{
+    $manager = \Drupal::entityDefinitionUpdateManager();
+    $entity_type = $manager->getEntityType('news');
+    
+    // Check if the entity type actually needs installing.
+    $change_list = $manager->getChangeList();
+    if (!empty($change_list['news']['entity_type'])) {
+        $manager->installEntityType(\Drupal::entityTypeManager()->getDefinition('news'));
+    }
+
+    $field_storage_definition = BaseFieldDefinition::create('string')
+        ->setLabel(t('Custom Data'))
+        ->setDescription(t('A base field added procedurally from another module.'))
+        ->setRevisionable(TRUE)
+        ->setTranslatable(TRUE);
+
+    // Install the field if it wasn't already installed during the entity creation.
+    if (!$manager->getFieldStorageDefinition('custom_news_data', 'news')) {
+        $manager->installFieldStorageDefinition('custom_news_data', 'news', 'content_entity_example', $field_storage_definition);
+    }
+}

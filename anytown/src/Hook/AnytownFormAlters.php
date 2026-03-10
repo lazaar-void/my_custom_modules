@@ -15,7 +15,7 @@ class AnytownFormAlters {
   #[Hook('form_user_register_form_alter')]
   public function formUserRegisterFormAlter(&$form, FormStateInterface $form_state) : void {
     // Add our custom validation handler.
-    $form['#validate'][] = 'anytown_user_register_validate';
+//    $form['#validate'][] = 'anytown_user_register_validate';
 
     $form['terms_of_use'] = [
       '#type' => 'fieldset',
